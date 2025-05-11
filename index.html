@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<title>Surpresa Dia das Mães - Cor Rosa com Imagem</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto&display=swap');
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    background: linear-gradient(135deg, #ffc1e3, #ff82ab);
+    font-family: 'Roboto', sans-serif;
+    color: #550033;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    padding: 25px 15px;
+    user-select: none;
+  }
+  h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: 3rem;
+    margin: 0.5em 0 0.2em;
+    text-shadow: 2px 2px 5px #a6336a;
+    text-align: center;
+  }
+  h2 {
+    font-weight: 400;
+    font-size: 1.4rem;
+    margin: 0 0 1.8rem;
+    text-align: center;
+    letter-spacing: 1.2px;
+  }
+  #imagem-mae {
+    max-width: 320px;
+    width: 90vw;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(230,90,140,0.65);
+    margin-bottom: 1.8rem;
+    user-select: none;
+  }
+  button {
+    background-color: #e91e63;
+    border: none;
+    color: white;
+    font-size: 1.3rem;
+    padding: 14px 32px;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 6px 15px rgba(233,30,99,0.65);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 220px;
+    max-width: 90%;
+    margin-bottom: 1.5rem;
+  }
+  button:hover, button:focus {
+    background-color: #ff4081;
+    outline: none;
+    transform: scale(1.08);
+  }
+  #mensagem-escondida {
+    max-width: 320px;
+    background: #ffc0d0cc;
+    color: #550033;
+    border-radius: 18px;
+    padding: 22px 24px;
+    font-size: 1.15rem;
+    line-height: 1.5;
+    box-shadow: 0 5px 18px rgba(230,90,140,0.75);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+    pointer-events: none;
+    text-align: center;
+    user-select: none;
+  }
+  #mensagem-escondida.mostrar {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  @media (max-width: 350px) {
+    h1 {
+      font-size: 2.4rem;
+    }
+    #mensagem-escondida {
+      max-width: 100%;
+      font-size: 1rem;
+      padding: 18px 20px;
+    }
+    button {
+      padding: 12px 26px;
+      font-size: 1.1rem;
+      width: 180px;
+    }
+  }
+</style>
+</head>
+<body>
+  <h1>Feliz Dia das Mães!</h1>
+  <h2>Uma surpresa especial toda em rosa para você, mamãe 💖</h2>
+
+  <img id="imagem-mae" src="Imagem do WhatsApp de 2025-05-10 à(s) 22.58.46_2bcb65b6.jpg" alt="Bela rosa para o Dia das Mães" />
+
+  <button id="btnSurpresa" aria-label="Revelar mensagens para minha mãe">Clique para uma surpresa</button>
+
+  <div id="mensagem-escondida" role="region" aria-live="polite" aria-atomic="true"></div>
+
+  <script>
+    const btn = document.getElementById('btnSurpresa');
+    const mensagem = document.getElementById('mensagem-escondida');
+    const mensagensEscondidas = [
+      'Mãe, você é a rosa mais bonita do meu jardim da vida.',
+      'Teu amor colore meu mundo com as cores mais doces e vibrantes.',
+      'Neste dia especial, quero que saiba o quanto você é amada e admirada.',
+      'Sua doçura e força inspiram cada passo que dou.',
+      'Obrigada por ser meu porto seguro. Te amo infinitamente, mamãe!'
+    ];
+
+    let indexMensagem = 0;
+
+    btn.addEventListener('click', () => {
+      if (!mensagem.classList.contains('mostrar')) {
+        mensagem.classList.add('mostrar');
+        mensagem.textContent = mensagensEscondidas[indexMensagem];
+        btn.textContent = 'Próxima mensagem';
+      } else {
+        indexMensagem++;
+        if (indexMensagem < mensagensEscondidas.length) {
+          mensagem.textContent = mensagensEscondidas[indexMensagem];
+        } else {
+          mensagem.textContent = 'Espero que tenha gostado da surpresa, mamãe! 🌸💕';
+          btn.disabled = true;
+          btn.style.backgroundColor = '#ad1457';
+          btn.style.cursor = 'default';
+        }
+      }
+    });
+  </script>
+</body>
+</html>
+
